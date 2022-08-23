@@ -12,9 +12,14 @@ namespace ContactBook
 {
     public partial class Main : Form
     {
+        //Define a private variable to connect with the business logic layer
+        public BusinessLogicLayer _businessLogicLayer;
+
         public Main()
         {
             InitializeComponent();
+            //Create a new instance of business logic layer inside the constructor
+            _businessLogicLayer = new BusinessLogicLayer();
         }
 
         #region Events
@@ -37,9 +42,23 @@ namespace ContactBook
              * is pressed
              */
             ContactDetails cd = new ContactDetails();
-            cd.ShowDialog();
+            cd.ShowDialog(this);
         }
 
         #endregion PrivateMethods
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            PopulateContacts();
+        }
+
+        /*
+         * This methos will load the contacts from the database on the grid
+         */
+        public void PopulateContacts()
+        {
+            List<Contact> contact = _businessLogicLayer.GetContacts();
+            gridContacts.DataSource = contact;
+        }
     }
 }
