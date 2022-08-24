@@ -29,12 +29,25 @@ namespace ContactBook
             {
                 _dataAccessLayer.InsertContact(cont);
             }
+            else
+            {
+                _dataAccessLayer.UpdateContact(cont);
+            }
             return cont;
+        }
+
+        /*
+         * This method allows delete the contact 
+         */
+        public void DeleteContact(int id)
+        {
+            _dataAccessLayer.DeleteContact(id);
         }
 
         public List<Contact> GetContacts()
         {
             return _dataAccessLayer.GetContacts();
         }
+
     }
 }

@@ -60,5 +60,47 @@ namespace ContactBook
             List<Contact> contact = _businessLogicLayer.GetContacts();
             gridContacts.DataSource = contact;
         }
+
+        private void gridContacts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Validate if the click is on the edit link
+            DataGridViewLinkCell cell = (DataGridViewLinkCell)gridContacts.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            if (cell.Value.ToString() == "Edit" || cell.Value.ToString() == "edit")
+            {
+                /*
+                 * Load the data of the road where was clicked the Edit button in a new
+                 * contactDetails window
+                 */
+                ContactDetails cd = new ContactDetails();
+                cd.LoadContact(new Contact
+                {
+                    Id = int.Parse((gridContacts.Rows[e.RowIndex].Cells[0].Value.ToString())),
+                    FirstName = gridContacts.Rows[e.RowIndex].Cells[1].Value.ToString(),
+                    LastName = gridContacts.Rows[e.RowIndex].Cells[2].Value.ToString(),
+                    Phone = gridContacts.Rows[e.RowIndex].Cells[3].Value.ToString(),
+                    Address = gridContacts.Rows[e.RowIndex].Cells[4].Value.ToString()
+                });
+                cd.ShowDialog(this);
+            }
+            else if (cell.Value.ToString() == "Delete" || cell.Value.ToString() == "delete")
+            {
+                /*
+                 * Execute the delete query if the word of the link is equal to Delete.
+                 * It receive the id of the contact that is clicked, like the edit method.
+                 */
+                int id = int.Parse((gridContacts.Rows[e.RowIndex].Cells[0].Value.ToString()));
+                DeleteContact(id);
+                PopulateContacts();
+            }
+        }
+
+        /*
+         * Delete method that receive the id of the contact where is located the delete cell.
+         * It comes from the business logic layer where is the call of the query.
+         */
+        private void DeleteContact(int id)
+        {
+            _businessLogicLayer.DeleteContact(id);
+        }
     }
 }
