@@ -35,6 +35,9 @@ your own user:
 **Recomended:** Windows NT integrated security
 4. Select the database on the dropdown list, it should appear ContactBook.
 5. Click on the "Test connection" button. If all was good it should appear a confirmation window.
+6. Click on "Ok".
+7. Open the file with Notepad or Sublime Text
+8. Copy the content of the third line after the **_;_** (semicolon), from *Integrated* to the end of the line. This is the connection line that we use in DataAccessLayer class to establish the connection to the database (Lines 18 and 19). Paste it on the 19 line of the class inside the double quotes.
 
 ## :white_check_mark: Let's use the app :white_check_mark:
 
