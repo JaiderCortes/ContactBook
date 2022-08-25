@@ -55,9 +55,9 @@ namespace ContactBook
         /*
          * This methos will load the contacts from the database on the grid
          */
-        public void PopulateContacts()
+        public void PopulateContacts(string searchTxt = null)
         {
-            List<Contact> contact = _businessLogicLayer.GetContacts();
+            List<Contact> contact = _businessLogicLayer.GetContacts(searchTxt);
             gridContacts.DataSource = contact;
         }
 
@@ -101,6 +101,12 @@ namespace ContactBook
         private void DeleteContact(int id)
         {
             _businessLogicLayer.DeleteContact(id);
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            PopulateContacts(txtSearch.Text);
+            txtSearch.Text = string.Empty;
         }
     }
 }

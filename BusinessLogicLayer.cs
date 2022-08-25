@@ -44,9 +44,9 @@ namespace ContactBook
             _dataAccessLayer.DeleteContact(id);
         }
 
-        public List<Contact> GetContacts()
+        public List<Contact> GetContacts(string searchTxt = null)
         {
-            return _dataAccessLayer.GetContacts();
+            return _dataAccessLayer.GetContacts(searchTxt);
         }
 
     }

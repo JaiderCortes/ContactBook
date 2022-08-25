@@ -153,7 +153,7 @@ namespace ContactBook
         }
 
         //Create the select method to show the contacts on the grid
-        public List<Contact> GetContacts()
+        public List<Contact> GetContacts(string search = null)
         {
             List<Contact> contacts = new List<Contact>();
             try
@@ -169,7 +169,23 @@ namespace ContactBook
                                 FROM contact
                             ";
 
-                SqlCommand command = new SqlCommand(sql, dbConn);
+                SqlCommand command = new SqlCommand();
+
+                if (!string.IsNullOrEmpty(search))
+                {
+                    sql += @"
+                                WHERE 
+                                    firstName LIKE @Search 
+                                    OR lastName LIKE @Search
+                                    OR phone LIKE @Search
+                                    OR address LIKE @Search
+                            ";
+                    command.Parameters.Add(new SqlParameter("@Search", $"%{search}%"));
+                }
+
+                command.CommandText = sql;
+                command.Connection = dbConn;
+
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {

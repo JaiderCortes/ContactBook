@@ -128,19 +128,19 @@
     <value>Name</value>
   </data>
   <data name="firstNameDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>130</value>
+    <value>120</value>
   </data>
   <data name="lastNameDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Last Name</value>
   </data>
   <data name="lastNameDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>130</value>
+    <value>120</value>
   </data>
   <data name="phoneDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Phone</value>
   </data>
   <data name="phoneDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>120</value>
+    <value>110</value>
   </data>
   <data name="addressDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Address</value>
@@ -393,6 +393,9 @@
         AALQAAACAAAAAlAAAAIgAAACQAAAAkAAAAIgAAACUAAAAlAAAAKQAAACIAAAAkAAAAIgAAACkAAAAlAA
         AAKQAAAC0AAAAsgAAATIAAAE0AAAAul//6U=
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
